@@ -1,0 +1,42 @@
+# Analyse de Phrase
+
+Ce programme simple analyse une phrase pour les éléments suivants :
+
+- La longueur de la phrase (le nombre de caractères).
+- Le nombre de mots dans la phrase (en supposant que les mots sont séparés par un espace).
+- Le nombre de voyelles dans la phrase.
+
+```
+ALGORITHM count_sentence_info
+VAR
+sentence: STRING := "This is a sample sentence."
+length_counter: INTEGER := 0;
+words_counter: INTEGER := 0;
+vowels_counter: INTEGER := 0;
+character: CHARACTER;
+
+BEGIN
+    FOR character IN sentence DO
+        length_counter := length_counter + 1;
+
+        IF (character = ' ') THEN
+            words_counter := words_counter + 1;
+        END_IF
+
+        SWITCH (character) DO
+            CASE 'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u':
+                vowels_counter := vowels_counter + 1;
+                BREAK;
+            DEFAULT:
+                // Do nothing for non-vowel characters
+        END_SWITCH
+    END_FOR
+
+    // Increment the words_counter by 1 for the last word
+    words_counter := words_counter + 1;
+
+    Write("Length:", length_counter);
+    Write("Words:", words_counter);
+    Write("Vowels:", vowels_counter);
+END
+```
